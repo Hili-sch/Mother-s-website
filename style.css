@@ -1,9 +1,11 @@
-/* --- Variables --- */
+/* =========================================
+   משתנים (Variables)
+========================================= */
 :root {
-    --primary-color: #4A7C82;       /* Soft Teal/Blue */
+    --primary-color: #4A7C82;       /* כחול-ירוק רך / Teal */
     --primary-light: #F4F7F8;
-    --secondary-color: #D3A77C;     /* Warm Sand/Gold */
-    --background-color: #FAF9F6;    /* Off-White / Cream */
+    --secondary-color: #D3A77C;     /* זהב/חול חם */
+    --background-color: #FAF9F6;    /* אוף-ווייט / קרם */
     --text-color: #2D3748;
     --text-light: #718096;
     --white: #FFFFFF;
@@ -13,7 +15,9 @@
     --shadow-hover: 0 15px 35px rgba(74, 124, 130, 0.1);
 }
 
-/* --- Global Styles --- */
+/* =========================================
+   עיצוב בסיסי (Global Styles)
+========================================= */
 * {
     margin: 0;
     padding: 0;
@@ -31,7 +35,7 @@ body {
 }
 
 main {
-    flex: 1;
+    flex: 1; /* דוחף את הפוטר לתחתית העמוד */
 }
 
 a {
@@ -40,7 +44,9 @@ a {
     transition: all var(--transition-speed) ease;
 }
 
-/* --- Container & Titles --- */
+/* =========================================
+   מבנה וכותרות (Container & Titles)
+========================================= */
 .container {
     max-width: 1140px;
     margin: 0 auto;
@@ -72,7 +78,9 @@ a {
     border-radius: 2px;
 }
 
-/* --- Buttons --- */
+/* =========================================
+   כפתורים (Buttons)
+========================================= */
 .btn {
     display: inline-block;
     padding: 14px 32px;
@@ -113,7 +121,9 @@ a {
     width: 100%;
 }
 
-/* --- Header & Nav --- */
+/* =========================================
+   תפריט עליון (Header & Nav)
+========================================= */
 #main-header {
     background-color: var(--white);
     box-shadow: 0 2px 20px rgba(0,0,0,0.02);
@@ -178,7 +188,9 @@ a {
     cursor: pointer;
 }
 
-/* --- Hero Section --- */
+/* =========================================
+   אזור פתיח (Hero Section)
+========================================= */
 .hero {
     background: linear-gradient(rgba(250, 249, 246, 0.92), rgba(250, 249, 246, 0.92)), url('https://images.unsplash.com/photo-1516534775068-ba3e7458af70?auto=format&fit=crop&q=80&w=1920') center/cover;
     padding: 120px 0;
@@ -207,13 +219,14 @@ a {
     color: var(--text-light);
 }
 
-/* --- Grid Layouts --- */
+/* =========================================
+   גריד וכרטיסיות (Grid & Cards)
+========================================= */
 .grid {
     display: grid;
     gap: 30px;
 }
 
-/* --- Features Section --- */
 .features {
     padding: 90px 0;
     background-color: var(--white);
@@ -244,7 +257,9 @@ a {
     font-size: 1.4rem;
 }
 
-/* --- POSTS & ARTICLES DESIGN (Modern & Elegant) --- */
+/* =========================================
+   מאמרים ופוסטים (Posts & Articles)
+========================================= */
 .post-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -328,10 +343,10 @@ a {
 }
 
 .btn-read-more:hover .arrow {
-    transform: translateX(-5px); /* Moves arrow left in RTL context */
+    transform: translateX(-5px); /* תזוזת חץ ב-RTL */
 }
 
-/* Single Post Layout */
+/* פוסט בודד */
 .single-post-container {
     max-width: 780px;
     margin: 40px auto;
@@ -392,7 +407,9 @@ a {
     border-top: 1px solid #F0F2F5;
 }
 
-/* --- FORMS DESIGN (Elegant & Modern) --- */
+/* =========================================
+   טפסים וצור קשר (Forms Design)
+========================================= */
 .contact-wrapper {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
@@ -473,7 +490,9 @@ textarea.form-control {
     resize: vertical;
 }
 
-/* --- Inner Page Defaults --- */
+/* =========================================
+   עמודי פנים כלליים (Inner Pages)
+========================================= */
 .page-content {
     padding: 80px 0;
 }
@@ -487,7 +506,9 @@ textarea.form-control {
     margin: 0 auto;
 }
 
-/* --- Footer --- */
+/* =========================================
+   פוטר (Footer)
+========================================= */
 .site-footer {
     background-color: #2D3748;
     color: var(--white);
@@ -501,7 +522,9 @@ textarea.form-control {
     color: #A0AEC0;
 }
 
-/* --- Responsive Design --- */
+/* =========================================
+   התאמה למובייל (Responsive)
+========================================= */
 @media (max-width: 992px) {
     .contact-wrapper {
         grid-template-columns: 1fr;
@@ -546,5 +569,45 @@ textarea.form-control {
     
     .single-post-container {
         padding: 30px 20px;
+    }
+}
+
+/* =========================================
+   אנימציית יונים מרחפות (Floating Doves)
+========================================= */
+#doves-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* מאפשר לחיצה על התוכן שמתחת */
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.dove-pair {
+    position: absolute;
+    bottom: -60px; /* מתחילים תמיד מחוץ למסך למטה */
+    font-size: 2rem;
+    opacity: 0;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+}
+
+/* ריחוף מלמטה כלפי מעלה עם תזוזה שמאלה */
+@keyframes fly-up {
+    0% {
+        transform: translate(0, 0) scale(0.6);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    85% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate(-20vw, -120vh) scale(1.2);
+        opacity: 0;
     }
 }
