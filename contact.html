@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>שרה שלזינגר - צור קשר</title>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header id="main-header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">שרה שלזינגר</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="פתח תפריט">☰</button>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html">בית</a></li>
+                    <li><a href="about.html">נעים להכיר</a></li>
+                    <li><a href="couples.html">יעוץ זוגי</a></li>
+                    <li><a href="singles.html">בחורה שוברת גלים</a></li>
+                    <li><a href="assessment.html">אבחון דידקטי</a></li>
+                    <li><a href="posts.html">מאמרים</a></li>
+                    <li><a href="contact.html" class="active">צור קשר</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page-content">
+        <div class="container">
+            <h1 class="section-title">נהיה בקשר</h1>
+            <p class="section-subtitle">נשמח להקשיב, לכוון וללוות אתכם בדרך החדשה שלכם</p>
+            
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h2>פרטי התקשרות</h2>
+                    <p class="info-lead">ניתן לתאם פגישות ייעוץ בקליניקה או לקבל פרטים נוספים:</p>
+                    <div class="info-item">
+                        <span class="info-icon">✉</span>
+                        <div>
+                            <strong>דוא"ל ליצירת קשר:</strong>
+                            <p>info@s-shlezinger.co.il</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">⏱</span>
+                        <div>
+                            <strong>אורך הפגישה:</strong>
+                            <p>50 דקות בקליניקה נעימה ודיסקרטית</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-container">
+                    <form class="elegant-form">
+                        <div class="form-group">
+                            <label class="form-label" for="name">שם מלא *</label>
+                            <input class="form-control" type="text" id="name" placeholder="ישראל ישראלי" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="email">כתובת אימייל *</label>
+                            <input class="form-control" type="email" id="email" placeholder="name@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="phone">מספר טלפון</label>
+                            <input class="form-control" type="tel" id="phone" placeholder="050-0000000">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="message">איך אוכל לעזור? *</label>
+                            <textarea class="form-control" id="message" rows="5" placeholder="כתבו כאן את פנייתכם..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">שליחת הודעה</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-bottom">
+            <p>&copy; כל הזכויות שמורות לשרה שלזינגר.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

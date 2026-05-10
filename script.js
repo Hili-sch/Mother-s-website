@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenuBtn.addEventListener('click', () => {
             mainNav.classList.toggle('active');
             
-            // Toggle icon between hamburger and close
             if (mainNav.classList.contains('active')) {
                 mobileMenuBtn.innerHTML = '✕';
             } else {
@@ -16,30 +15,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Smooth Scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            const targetId = this.getAttribute('href');
+    // Elegant Form Submit Animation / Behavior
+    const elegantForm = document.querySelector('.elegant-form');
+    if (elegantForm) {
+        elegantForm.addEventListener('submit', (e) => {
+            e.preventDefault();
             
-            // Ignore if it's just '#'
-            if (targetId === '#') return;
-
-            const targetElement = document.querySelector(targetId);
+            const submitBtn = elegantForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
             
-            if (targetElement) {
-                e.preventDefault();
+            // Visual feedback
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'שולח...';
+            submitBtn.style.opacity = '0.8';
+            
+            setTimeout(() => {
+                submitBtn.textContent = '✓ ההודעה נשלחה בהצלחה!';
+                submitBtn.style.backgroundColor = '#48BB78'; // Green success color
+                elegantForm.reset();
                 
-                // Close mobile menu if open
-                if (mainNav.classList.contains('active')) {
-                    mainNav.classList.remove('active');
-                    mobileMenuBtn.innerHTML = '☰';
-                }
-
-                targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
+                setTimeout(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalText;
+                    submitBtn.style.backgroundColor = ''; // Restore to CSS primary
+                    submitBtn.style.opacity = '';
+                }, 3000);
+            }, 1500);
         });
-    });
+    }
 });
