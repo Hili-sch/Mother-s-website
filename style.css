@@ -1,0 +1,361 @@
+/* פלטת צבעים ורדרדה ועדינה */
+:root {
+    --primary-color: #d4959b; /* ורוד עתיק / פודרה */
+    --primary-hover: #b87a80;
+    --bg-color: #fff8f9; /* ורוד-לבן בהיר מאוד לרקע הכללי */
+    --surface-color: #ffffff;
+    --text-main: #4a3b3d; /* צבע טקסט חם יותר */
+    --text-light: #7a6568;
+    --border-radius: 8px;
+    --transition: 0.3s ease-in-out;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Assistant', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* כפתורים */
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 28px;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+.btn-large {
+    padding: 16px 36px;
+    font-size: 1.2rem;
+}
+
+/* הדר */
+header {
+    background-color: var(--surface-color);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+}
+
+.logo h1 {
+    font-size: 1.6rem;
+    color: var(--primary-color);
+}
+
+.logo span {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links a:not(.btn-primary) {
+    font-weight: 600;
+    color: var(--text-main);
+    transition: var(--transition);
+}
+
+.nav-links a:not(.btn-primary):hover {
+    color: var(--primary-color);
+}
+
+.mobile-menu-btn {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+/* אזור ראשי - Hero מרווח ומוארך */
+.hero {
+    background: linear-gradient(135deg, #fcecee 0%, #fff8f9 100%);
+    min-height: 85vh; /* מתיחה לגובה המסך */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 800px;
+    position: relative;
+    z-index: 10; /* מעל היונים */
+}
+
+.hero h2 {
+    font-size: 3.5rem;
+    margin-bottom: 25px;
+    color: var(--primary-color);
+}
+
+.hero p {
+    font-size: 1.3rem;
+    color: var(--text-light);
+    margin-bottom: 45px;
+}
+
+/* אנימציית יונים - מפוצלת לתנועה רוחבית וריחוף הרמוני עדין */
+.doves-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* המעטפת אחראית על התנועה מצד ימין לשמאל */
+.dove-wrapper {
+    position: absolute;
+    right: -15%; /* מתחיל מחוץ למסך מימין */
+    animation: fly-across linear infinite;
+}
+
+/* זוג היונים אחראי על תנועת הריחוף המתמדת (Hovering) */
+.dove-pair {
+    transform: scaleX(-1); /* היפוך כדי שיפנו שמאלה */
+    animation: hover-bob 3s ease-in-out infinite alternate;
+}
+
+/* זוג 1 */
+.dove-wrapper:nth-child(1) { top: 15%; animation-duration: 35s; animation-delay: 0s; }
+.dove-wrapper:nth-child(1) .dove-pair { font-size: 3rem; opacity: 0.35; animation-delay: 0s; }
+
+/* זוג 2 */
+.dove-wrapper:nth-child(2) { top: 60%; animation-duration: 45s; animation-delay: 10s; }
+.dove-wrapper:nth-child(2) .dove-pair { font-size: 2rem; opacity: 0.25; animation-delay: 1s; }
+
+/* זוג 3 */
+.dove-wrapper:nth-child(3) { top: 35%; animation-duration: 40s; animation-delay: 20s; }
+.dove-wrapper:nth-child(3) .dove-pair { font-size: 4rem; opacity: 0.2; animation-delay: 2s; }
+
+/* אנימציית התקדמות רוחבית */
+@keyframes fly-across {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-120vw); }
+}
+
+/* אנימציית ריחוף/נדנוד מתמדת לתחושת הרמוניה */
+@keyframes hover-bob {
+    0% { transform: scaleX(-1) translateY(-15px) rotate(3deg); }
+    100% { transform: scaleX(-1) translateY(15px) rotate(-3deg); }
+}
+
+/* כותרות ומרווחים מורחבים */
+.section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 60px;
+    color: var(--primary-color);
+}
+
+.section-padding {
+    padding: 120px 0; /* ריווח גדול במיוחד לתחושת מרחב */
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* קלפי שירותים */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+}
+
+.card {
+    background-color: var(--surface-color);
+    padding: 50px 30px;
+    border-radius: var(--border-radius);
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+    transition: var(--transition);
+    border-bottom: 4px solid transparent;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    border-bottom: 4px solid var(--primary-color);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.06);
+}
+
+.card-icon {
+    font-size: 3.5rem;
+    margin-bottom: 25px;
+}
+
+.card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+}
+
+.card p {
+    color: var(--text-light);
+}
+
+/* המלצות */
+.testimonials {
+    background-color: #fcecee;
+}
+
+.testimonial-slider {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 40px;
+}
+
+.testimonial-item {
+    background-color: var(--surface-color);
+    padding: 50px;
+    border-radius: var(--border-radius);
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+}
+
+.testimonial-item::before {
+    content: '"';
+    font-size: 6rem;
+    color: var(--primary-color);
+    opacity: 0.1;
+    position: absolute;
+    top: 0px;
+    right: 20px;
+    font-family: serif;
+}
+
+.quote {
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--text-light);
+    position: relative;
+    z-index: 1;
+}
+
+/* טופס יצירת קשר */
+.form-container {
+    max-width: 650px;
+    background-color: var(--surface-color);
+    padding: 60px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+}
+
+.text-center {
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--text-light);
+    font-size: 1.1rem;
+}
+
+.input-group {
+    margin-bottom: 25px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 18px;
+    border: 1px solid #eee;
+    border-radius: var(--border-radius);
+    font-family: 'Assistant', sans-serif;
+    font-size: 1.05rem;
+    background-color: #fafafa;
+    transition: var(--transition);
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(212, 149, 155, 0.15);
+}
+
+.btn-submit {
+    width: 100%;
+    font-size: 1.2rem;
+    padding: 18px;
+}
+
+/* פוטר */
+footer {
+    background-color: #ab757b;
+    color: white;
+    text-align: center;
+    padding: 40px 0;
+}
+
+/* התאמה למובייל */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background-color: var(--surface-color);
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    
+    .nav-links.active {
+        display: flex;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .hero h2 {
+        font-size: 2.5rem;
+    }
+    
+    .section-padding {
+        padding: 80px 0;
+    }
+}
