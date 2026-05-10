@@ -1,15 +1,15 @@
-/* פלטת צבעים ורדרדה ועדינה */
+/* --- Variables --- */
 :root {
-    --primary-color: #d4959b; /* ורוד עתיק / פודרה */
-    --primary-hover: #b87a80;
-    --bg-color: #fff8f9; /* ורוד-לבן בהיר מאוד לרקע הכללי */
-    --surface-color: #ffffff;
-    --text-main: #4a3b3d; /* צבע טקסט חם יותר */
-    --text-light: #7a6568;
-    --border-radius: 8px;
-    --transition: 0.3s ease-in-out;
+    --primary-color: #4A7C82; /* Soft Teal/Blue */
+    --secondary-color: #D3A77C; /* Warm Sand/Gold */
+    --background-color: #F8F9FA; /* Off-White */
+    --text-color: #333333;
+    --text-light: #666666;
+    --white: #FFFFFF;
+    --transition-speed: 0.3s;
 }
 
+/* --- Global Styles --- */
 * {
     margin: 0;
     padding: 0;
@@ -17,345 +17,312 @@
 }
 
 body {
-    font-family: 'Assistant', sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-main);
+    font-family: 'Heebo', sans-serif;
+    color: var(--text-color);
+    background-color: var(--background-color);
     line-height: 1.6;
-    overflow-x: hidden;
 }
 
 a {
     text-decoration: none;
-    color: inherit;
+    color: var(--primary-color);
+    transition: color var(--transition-speed) ease;
+}
+
+a:hover {
+    color: var(--secondary-color);
 }
 
 .container {
-    width: 90%;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
-/* כפתורים */
+.section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: var(--secondary-color);
+    margin: 10px auto 0;
+}
+
+/* --- Buttons --- */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: background-color var(--transition-speed) ease, transform 0.2s;
+}
+
 .btn-primary {
     background-color: var(--primary-color);
-    color: white;
-    padding: 12px 28px;
-    border-radius: var(--border-radius);
-    font-weight: 600;
-    transition: var(--transition);
-    border: none;
-    cursor: pointer;
-    display: inline-block;
+    color: var(--white);
 }
 
 .btn-primary:hover {
-    background-color: var(--primary-hover);
+    background-color: #385e62;
+    color: var(--white);
     transform: translateY(-2px);
 }
 
-.btn-large {
-    padding: 16px 36px;
-    font-size: 1.2rem;
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: var(--white);
 }
 
-/* הדר */
-header {
-    background-color: var(--surface-color);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+.btn-secondary:hover {
+    background-color: #b58d64;
+}
+
+/* --- Header & Nav --- */
+#main-header {
+    background-color: var(--white);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
 }
 
-.nav-container {
+.header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 80px;
 }
 
-.logo h1 {
-    font-size: 1.6rem;
+.logo a {
+    font-size: 1.5rem;
+    font-weight: 800;
     color: var(--primary-color);
 }
 
-.logo span {
-    font-size: 0.9rem;
-    color: var(--text-light);
-}
-
-.nav-links {
+#main-nav ul {
     list-style: none;
     display: flex;
-    align-items: center;
-    gap: 30px;
+    gap: 20px;
 }
 
-.nav-links a:not(.btn-primary) {
+#main-nav a {
+    color: var(--text-color);
     font-weight: 600;
-    color: var(--text-main);
-    transition: var(--transition);
+    padding: 5px 0;
+    position: relative;
 }
 
-.nav-links a:not(.btn-primary):hover {
+#main-nav a.active, #main-nav a:hover {
     color: var(--primary-color);
+}
+
+#main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0%;
+    height: 2px;
+    background-color: var(--secondary-color);
+    transition: width var(--transition-speed) ease;
+}
+
+#main-nav a:hover::after, #main-nav a.active::after {
+    width: 100%;
 }
 
 .mobile-menu-btn {
     display: none;
+    background: none;
+    border: none;
     font-size: 1.5rem;
-    cursor: pointer;
     color: var(--primary-color);
+    cursor: pointer;
 }
 
-/* אזור ראשי - Hero מרווח ומוארך */
+/* --- Hero Section --- */
 .hero {
-    background: linear-gradient(135deg, #fcecee 0%, #fff8f9 100%);
-    min-height: 85vh; /* מתיחה לגובה המסך */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background: linear-gradient(rgba(248, 249, 250, 0.9), rgba(248, 249, 250, 0.9)), url('https://images.unsplash.com/photo-1516534775068-ba3e7458af70?auto=format&fit=crop&q=80&w=1920') center/cover;
+    padding: 100px 0;
     text-align: center;
-    position: relative;
-    overflow: hidden;
+    border-bottom: 5px solid var(--primary-color);
 }
 
-.hero-content {
-    max-width: 800px;
-    position: relative;
-    z-index: 10; /* מעל היונים */
+.hero h1 {
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
 }
 
 .hero h2 {
-    font-size: 3.5rem;
-    margin-bottom: 25px;
-    color: var(--primary-color);
+    font-size: 1.8rem;
+    color: var(--text-light);
+    margin-bottom: 20px;
+    font-weight: 400;
 }
 
 .hero p {
-    font-size: 1.3rem;
-    color: var(--text-light);
-    margin-bottom: 45px;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    color: var(--text-color);
 }
 
-/* אנימציית יונים - מפוצלת לתנועה רוחבית וריחוף הרמוני עדין */
-.doves-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-}
-
-/* המעטפת אחראית על התנועה מצד ימין לשמאל */
-.dove-wrapper {
-    position: absolute;
-    right: -15%; /* מתחיל מחוץ למסך מימין */
-    animation: fly-across linear infinite;
-}
-
-/* זוג היונים אחראי על תנועת הריחוף המתמדת (Hovering) */
-.dove-pair {
-    transform: scaleX(-1); /* היפוך כדי שיפנו שמאלה */
-    animation: hover-bob 3s ease-in-out infinite alternate;
-}
-
-/* זוג 1 */
-.dove-wrapper:nth-child(1) { top: 15%; animation-duration: 35s; animation-delay: 0s; }
-.dove-wrapper:nth-child(1) .dove-pair { font-size: 3rem; opacity: 0.35; animation-delay: 0s; }
-
-/* זוג 2 */
-.dove-wrapper:nth-child(2) { top: 60%; animation-duration: 45s; animation-delay: 10s; }
-.dove-wrapper:nth-child(2) .dove-pair { font-size: 2rem; opacity: 0.25; animation-delay: 1s; }
-
-/* זוג 3 */
-.dove-wrapper:nth-child(3) { top: 35%; animation-duration: 40s; animation-delay: 20s; }
-.dove-wrapper:nth-child(3) .dove-pair { font-size: 4rem; opacity: 0.2; animation-delay: 2s; }
-
-/* אנימציית התקדמות רוחבית */
-@keyframes fly-across {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-120vw); }
-}
-
-/* אנימציית ריחוף/נדנוד מתמדת לתחושת הרמוניה */
-@keyframes hover-bob {
-    0% { transform: scaleX(-1) translateY(-15px) rotate(3deg); }
-    100% { transform: scaleX(-1) translateY(15px) rotate(-3deg); }
-}
-
-/* כותרות ומרווחים מורחבים */
-.section-title {
-    text-align: center;
-    font-size: 2.2rem;
-    margin-bottom: 60px;
-    color: var(--primary-color);
-}
-
-.section-padding {
-    padding: 120px 0; /* ריווח גדול במיוחד לתחושת מרחב */
-    min-height: 60vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-/* קלפי שירותים */
-.cards-grid {
+/* --- Grid Layouts --- */
+.grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 40px;
+    gap: 30px;
+}
+
+/* --- Features Section --- */
+.features {
+    padding: 80px 0;
+    background-color: var(--white);
+}
+
+.features-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
 .card {
-    background-color: var(--surface-color);
-    padding: 50px 30px;
-    border-radius: var(--border-radius);
-    text-align: center;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.02);
-    transition: var(--transition);
-    border-bottom: 4px solid transparent;
+    background: var(--background-color);
+    padding: 30px;
+    border-radius: 10px;
+    border-top: 4px solid var(--secondary-color);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform var(--transition-speed) ease;
 }
 
 .card:hover {
-    transform: translateY(-8px);
-    border-bottom: 4px solid var(--primary-color);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.06);
-}
-
-.card-icon {
-    font-size: 3.5rem;
-    margin-bottom: 25px;
+    transform: translateY(-5px);
 }
 
 .card h3 {
-    font-size: 1.6rem;
-    margin-bottom: 15px;
-}
-
-.card p {
-    color: var(--text-light);
-}
-
-/* המלצות */
-.testimonials {
-    background-color: #fcecee;
-}
-
-.testimonial-slider {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-    gap: 40px;
-}
-
-.testimonial-item {
-    background-color: var(--surface-color);
-    padding: 50px;
-    border-radius: var(--border-radius);
-    position: relative;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.02);
-}
-
-.testimonial-item::before {
-    content: '"';
-    font-size: 6rem;
     color: var(--primary-color);
-    opacity: 0.1;
-    position: absolute;
-    top: 0px;
-    right: 20px;
-    font-family: serif;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
 }
 
-.quote {
-    font-size: 1.15rem;
+/* --- Testimonials Section --- */
+.testimonials {
+    padding: 80px 0;
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.testimonials .section-title {
+    color: var(--white);
+}
+
+.testimonials-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.testimonial-card {
+    background: rgba(255,255,255,0.1);
+    padding: 30px;
+    border-radius: 10px;
     font-style: italic;
-    color: var(--text-light);
-    position: relative;
-    z-index: 1;
+    border-right: 4px solid var(--secondary-color);
 }
 
-/* טופס יצירת קשר */
-.form-container {
-    max-width: 650px;
-    background-color: var(--surface-color);
-    padding: 60px;
-    border-radius: var(--border-radius);
-    box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+/* --- Footer --- */
+.site-footer {
+    background-color: #2c3e50;
+    color: var(--white);
+    padding: 60px 0 20px;
 }
 
-.text-center {
-    text-align: center;
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
     margin-bottom: 40px;
-    color: var(--text-light);
-    font-size: 1.1rem;
 }
 
-.input-group {
-    margin-bottom: 25px;
+.newsletter h3, .footer-info h3 {
+    margin-bottom: 15px;
+    color: var(--secondary-color);
 }
 
-.input-group input {
-    width: 100%;
-    padding: 18px;
-    border: 1px solid #eee;
-    border-radius: var(--border-radius);
-    font-family: 'Assistant', sans-serif;
-    font-size: 1.05rem;
-    background-color: #fafafa;
-    transition: var(--transition);
+.newsletter-form {
+    display: flex;
+    margin-top: 15px;
 }
 
-.input-group input:focus {
+.newsletter-form input {
+    padding: 12px;
+    border: none;
+    border-radius: 0 30px 30px 0;
     outline: none;
-    border-color: var(--primary-color);
-    background-color: #fff;
-    box-shadow: 0 0 0 3px rgba(212, 149, 155, 0.15);
+    width: 250px;
 }
 
-.btn-submit {
-    width: 100%;
-    font-size: 1.2rem;
-    padding: 18px;
+.newsletter-form button {
+    border-radius: 30px 0 0 30px;
 }
 
-/* פוטר */
-footer {
-    background-color: #ab757b;
-    color: white;
+.footer-bottom {
     text-align: center;
-    padding: 40px 0;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.9rem;
+    color: #a0aab5;
 }
 
-/* התאמה למובייל */
+/* --- Responsive Design --- */
 @media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 80px;
-        left: 0;
-        right: 0;
-        background-color: var(--surface-color);
-        padding: 20px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    }
-    
-    .nav-links.active {
-        display: flex;
-    }
-
     .mobile-menu-btn {
         display: block;
     }
 
-    .hero h2 {
+    #main-nav {
+        display: none;
+        position: absolute;
+        top: 80px;
+        right: 0;
+        width: 100%;
+        background: var(--white);
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+
+    #main-nav.active {
+        display: block;
+    }
+
+    #main-nav ul {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    #main-nav a {
+        display: block;
+        padding: 15px 20px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .hero h1 {
         font-size: 2.5rem;
     }
     
-    .section-padding {
-        padding: 80px 0;
+    .newsletter-form {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .newsletter-form input, .newsletter-form button {
+        border-radius: 30px;
+        width: 100%;
     }
 }
